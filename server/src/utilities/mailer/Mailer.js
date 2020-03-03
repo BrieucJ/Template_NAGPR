@@ -12,7 +12,7 @@ const ejs = require("ejs");
   });
 
    const sendEmail = (email, subject, html) => {
-     console.log('sendEmail')
+    console.log('sendEmail')
     var email = {
       from: process.env.EMAIL,
       to: email,
@@ -31,11 +31,11 @@ const ejs = require("ejs");
 
 const sendWelcomeEmail = (user) => {
     console.log('sendWelcomeEmail')
-    ejs.renderFile(__dirname + "/templates/welcome.ejs", { name: user.name }, function (err, data) {
+    ejs.renderFile(__dirname + "/templates/welcome.ejs", { name: user.name, app_name: process.env.APP_NAME }, function (err, data) {
       if (err) {
           console.log(err);
       } else {
-        sendEmail(user.email, 'Welcome', data)
+        sendEmail(user.email, `Welcome to ${process.env.APP_NAME}`, data)
       }
     })
  }
