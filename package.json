@@ -8,8 +8,7 @@
     "dev": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm --cwd client install && npm --cwd client build",
-    "deploy": "cp -a client/build/. public/",
-    "heroku-postbuild": "npm build && npm deploy"
+    "heroku-postbuild": "npm build"
   },
   "keywords": [],
   "author": "",
