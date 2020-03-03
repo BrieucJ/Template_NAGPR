@@ -12,8 +12,8 @@ import { setContext } from 'apollo-link-context'
 import { BrowserRouter } from 'react-router-dom'
 require('dotenv').config()
 
-const uri = process.NODE_ENV !== 'production' ? 'http://localhost:3001/graphql' : process.env.REACT_APP_GRAPHQL_URI;
-console.log(process.NODE_ENV)
+const uri = process.env.NODE_ENV !== 'production' ? 'http://localhost:3001/graphql' : process.env.REACT_APP_GRAPHQL_URI;
+console.log(process.env.NODE_ENV)
 console.log(uri)
 const httpLink = createHttpLink({uri: uri})
 const authLink = setContext((_, { headers }) => {
