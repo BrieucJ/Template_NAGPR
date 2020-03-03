@@ -8,6 +8,7 @@ const resolvers = {
   Query,
   Mutation,
 }
+
 const typeDefs = require('./schema');
 
 const server = new ApolloServer({
@@ -17,7 +18,6 @@ const server = new ApolloServer({
     // console.log(req)
     return {
       ...req,
-      APP_SECRET: process.env.APP_SECRET,
       prisma
     }
   },
