@@ -121,8 +121,11 @@ class Auth extends Component {
       case 'BAD_EMAIL':
         errors.email = 'Unknown email'
       break;
+      case "USER_ALREADY_EXIST":
+        errors.email = 'User already registered. Try to log in.'
+      break;
       case 'BAD_PASSWORD':
-        errors.email = 'Password incorrect'
+        errors.password = 'Password incorrect'
       break;
       default:
       break;
