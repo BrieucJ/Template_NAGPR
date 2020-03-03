@@ -10,8 +10,12 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { setContext } from 'apollo-link-context'
 //ROUTER
 import { BrowserRouter } from 'react-router-dom'
+require('dotenv').config()
 
-const httpLink = createHttpLink({uri: `http://localhost:${process.env.PORT || 4000}`})
+const uri = process.env !== 'production' ? 'http://localhost:3001/graphql' : process.env.REACT_APP_GRAPHQL_URI;
+console.log(process.env)
+console.log(uri)
+const httpLink = createHttpLink({uri: uri})
 const authLink = setContext((_, { headers }) => {
     const token = localStorage.getItem('token')
     return {
