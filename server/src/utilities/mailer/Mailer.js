@@ -10,13 +10,12 @@ const nodemailer = require('nodemailer');
     },
   });
 
-   const sendEmail = (email, subject, html, text) => {
+   const sendEmail = (email, subject, html) => {
      console.log('sendEmail')
     var email = {
       from: process.env.EMAIL,
       to: email,
       subject: subject,
-      text: text,
       html: html
     };
     transporter.sendMail(email, function(err, info){
@@ -30,9 +29,7 @@ const nodemailer = require('nodemailer');
   }
 
 const sendWelcomeEmail = (user) => {
-    console.log('sendWelcomeEmail')
-    console.log(user)
-    sendEmail(user.email, 'Welcome', 'Welcome', '<p>WELCOME/p>')
+    sendEmail(user.email, 'HELLO EVERYONE', '<p>WELCOME/p>')
  }
  
  const otherMethod = () => {
