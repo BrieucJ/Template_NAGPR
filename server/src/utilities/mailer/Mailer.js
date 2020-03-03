@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const ejs = require("ejs");
 
   var transporter = nodemailer.createTransport({
     host: process.env.MAILGUN_SMTP_SERVER,
@@ -29,14 +30,17 @@ const nodemailer = require('nodemailer');
   }
 
 const sendWelcomeEmail = (user) => {
-    sendEmail(user.email, 'HELLO EVERYONE', '<p>WELCOME/p>')
+    console.log('sendWelcomeEmail')
+    ejs.renderFile(__dirname + "/templates/welcome.ejs", { name: user.name }, function (err, data) {
+      if (err) {
+          console.log(err);
+      } else {
+        sendEmail(user.email, 'Welcome', data)
+      }
+    })
  }
- 
- const otherMethod = () => {
-    // your method logic 
- }
+
  
  module.exports = {
-    sendWelcomeEmail, 
-    otherMethod,
+    sendWelcomeEmail
  };
