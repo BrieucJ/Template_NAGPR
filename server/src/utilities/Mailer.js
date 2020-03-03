@@ -1,16 +1,13 @@
 const nodemailer = require('nodemailer');
 
-const {
-    SENDGRID_USERNAME,
-    SENDGRID_PASSWORD
-} = process.env;
+console.log(process.env.MAILGUN_API_KEY)
+console.log(process.env.MAILGUN_DOMAIN)
 
-// Create reusable transporter object using the default SMTP transport
 var transporter = nodemailer.createTransport({
-    service: 'SendGrid',
+    service: 'Mailgun',
     auth: {
-      user: SENDGRID_USERNAME,
-      pass: SENDGRID_PASSWORD
+        api_key: process.env.MAILGUN_API_KEY,
+        domain: process.env.MAILGUN_DOMAIN
     }
   });
 
